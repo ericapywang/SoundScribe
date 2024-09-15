@@ -114,7 +114,3 @@ def download_audio(audio_url, output_file="output.mp3"):
     #             output_file = f"output.mp3"
     #             download_audio(audio_url, output_file)
             
-
-
-if __name__ == '__main__':
-    main()

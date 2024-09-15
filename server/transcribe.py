@@ -42,7 +42,7 @@ def transcribe():
     print("Extracted Diverse Topics:", keywords)
     print("-" * 50)
     tags = "pop"
-    
+
     topics = [f"raspy, tenor range, male funky vocal, normal tempo pop song, about {keywords}"]
     
     for i, topic in enumerate(topics, 1):
@@ -57,5 +57,5 @@ def transcribe():
             
             # Step 3: If the audio URL is retrieved, download it as an MP3 file
             if audio_url:
-                output_file = f"output.mp3"
+                output_file = f"../client/public/output.mp3"
                 download_audio(audio_url, output_file)
