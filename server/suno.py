@@ -89,28 +89,4 @@ def download_audio(audio_url, output_file="output.mp3"):
         print(f"Audio downloaded successfully and saved as {output_file}")
     else:
         print(f"Failed to download the audio. Status code: {response.status_code}")
-
-# Main function to handle the entire flow
-# def main():
-    # Take user input for the topic and tags
-    # topic = input("Enter the topic for the song: ")
-    # tags = input("Enter tags for the song (e.g., pop, rock, etc.): ")
-    
-
-    # topics = ["super raspy female funky vocal about New York", "classical opera smooth female vocal about New York"]
-    
-    # for i, topic in enumerate(topics, 1):
-    #     print(f"\nProcessing topic {i}: {topic}")
-        
-    #     # Step 1: Generate audio from the topic and tags
-    #     clip_id = generate_audio(topic, tags)
-        
-    #     # Step 2: If audio is generated, monitor the status until it's ready
-    #     if clip_id:
-    #         audio_url = get_clip_details(clip_id)
-            
-    #         # Step 3: If the audio URL is retrieved, download it as an MP3 file
-    #         if audio_url:
-    #             output_file = f"output.mp3"
-    #             download_audio(audio_url, output_file)
             

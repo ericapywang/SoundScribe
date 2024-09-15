@@ -9,13 +9,11 @@ const config = require('../../config.json');
 
 export default function App() {
   const router = useRouter();
-  //const [ignored, setIgnore] = useState(false);
   const hasMadeApiCalls = useRef(false); // Ref to track if API calls have been made
 
 
   const makeApiCalls = async() => {
     await fetch(`http://${config.server_host}:${config.server_port}/api/transcribe`, { method: 'GET' });
-    //await fetch(`http://${config.server_host}:${config.server_port}/api/generate`, {method: 'GET'});
 
     router.push('/playback');
   }
@@ -25,7 +23,7 @@ export default function App() {
       hasMadeApiCalls.current = true;
       makeApiCalls();
     }
-  }, []); // Empty dependency array to run this effect once when the component mounts
+  }, []);
 
   return (
     <div>

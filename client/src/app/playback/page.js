@@ -56,14 +56,14 @@ export default function Playback() {
           variant="contained"
           sx={{
             marginTop: '20px',
-            background: 'linear-gradient(90deg, #ff7b72, #a855f7)', // Same gradient as Navbar
+            background: 'linear-gradient(90deg, #ff7b72, #a855f7)',
             padding: '12px 24px',
             fontSize: '18px',
             borderRadius: '30px',
             color: '#fff',
             '&:hover': {
-              background: 'linear-gradient(90deg, #a855f7, #ff7b72)', // Reverse gradient on hover
-              opacity: 0.9, // Slight transparency on hover
+              background: 'linear-gradient(90deg, #a855f7, #ff7b72)',
+              opacity: 0.9,
             },
           }}
           onClick={handlePlay}

@@ -17,7 +17,6 @@ export default function Home() {
   }
 
   const stopRecording = async () => {
-    //fetch(`http://${config.server_host}:${config.server_port}/api/transcribe`, {method: 'GET'});
     router.push('loading');
   }
 
@@ -59,7 +58,6 @@ export default function Home() {
         width='100vw'
       >
         <Stack spacing={5}>
-          {/* Main Recording Button */}
           <Button
             sx={{
               background: 'linear-gradient(90deg, #ff7b72, #a855f7)', // Gradient similar to your button palette
