@@ -1,7 +1,9 @@
 'use client';
+import React from 'react';
 import {Button, Box, Stack} from '@mui/material/';
 import MicIcon from '@mui/icons-material/Mic';
 import { useRouter } from 'next/navigation';
+import Visualizer from './components/AudioVisualizer';
 
 const config = require('../config.json');
 
@@ -25,9 +27,18 @@ export default function Home() {
         width='100vw'
       >
         <Stack spacing={5}>
-          <Button style={{backgroundColor: 'blue', borderRadius: '50%', width: 200, height: 200, minWidth: 0}} onClick={startRecording}>
+          <Button sx={{backgroundColor: 'blue',
+            borderRadius: '50%',
+            width: 200,
+            height: 200,
+            minWidth: 0,
+              '&:hover': {
+                boxShadow: '0 0 0 10px gray',
+              }}}
+            onClick={startRecording}>
             <MicIcon style={{color: 'white', width: 90, height: 90}}></MicIcon>
           </Button>
+          <Visualizer />
           <Button style={{backgroundColor: 'blue', width: 200, height: 60}} onClick={generate}>
             Generate
           </Button>
