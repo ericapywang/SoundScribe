@@ -41,14 +41,15 @@ def transcribe():
     
     print("Extracted Diverse Topics:", keywords)
     print("-" * 50)
-
+    tags = "pop"
+    
     topics = [f"raspy, tenor range, male funky vocal, normal tempo pop song, about {keywords}"]
     
     for i, topic in enumerate(topics, 1):
         print(f"\nProcessing topic {i}: {topic}")
         
         # Step 1: Generate audio from the topic and tags
-        clip_id = "pop"
+        clip_id = generate_audio(topic, tags)
         
         # Step 2: If audio is generated, monitor the status until it's ready
         if clip_id:
