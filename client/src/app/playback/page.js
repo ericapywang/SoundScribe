@@ -10,7 +10,7 @@ export default function Playback() {
 
   useEffect(() => {
     // Create a new Audio object with the correct path to the MP3 file
-    audioRef.current = new Audio('../../../output.mp3');
+    audioRef.current = new Audio('/output.mp3');
 
     // Play the audio automatically when the component mounts
     const playAudio = async () => {
