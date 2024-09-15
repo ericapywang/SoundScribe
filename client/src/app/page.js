@@ -11,15 +11,15 @@ export default function Home() {
   const router = useRouter();
   const [isRecording, setRecording] = useState(false);
 
-  const generate = async () => {
-    router.push('/loading');
-  };
-
   const startRecording = async () => {
     setRecording(true);
-    await fetch(`http://${config.server_host}:${config.server_port}/api/record`, { method: 'GET' });
-    // .then(setRecording(false));
-  };
+    await fetch(`http://${config.server_host}:${config.server_port}/api/record`, {method: 'GET'})
+  }
+
+  const stopRecording = async () => {
+    //fetch(`http://${config.server_host}:${config.server_port}/api/transcribe`, {method: 'GET'});
+    router.push('loading');
+  }
 
   const keyframes = `@keyframes pulse {
     0% {
@@ -73,7 +73,7 @@ export default function Home() {
               animation: isRecording ? 'pulse-shadow 1s infinite' : 'none',
               boxShadow: isRecording ? '0 0 0 15px rgba(168, 85, 247, 0.5)' : 'none', // Change the shadow to match the palette
             }}
-            onClick={startRecording}
+            onClick={isRecording ? stopRecording : startRecording}
           >
             <MicIcon style={{ color: 'white', width: 90, height: 90 }}></MicIcon>
           </Button>
