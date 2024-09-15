@@ -1,0 +1,15 @@
+{
+    "terminal.integrated.gpuAcceleration": "on",
+     "python.pythonPath": "C:\\Users\\ryota\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+     "terminal.integrated.env.windows": {
+     "PATH": "C:\\Users\\ryota\\AppData\\Local\\Programs\\Python\\Python39\\;${env:PATH}"
+     }
+}
+
+// {
+//     "terminal.integrated.gpuAcceleration": "on",
+//      "python.pythonPath": "C:\\Users\\ryota\\anaconda3\\envs\\audio\\python.exe",
+//      "terminal.integrated.env.windows": {
+//      "PATH": "C:\\Users\\ryota\\anaconda3\\envs\\audio\\;${env:PATH}"
+//      }
+// }
