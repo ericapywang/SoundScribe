@@ -5,6 +5,7 @@ from flask_cors import CORS
 from record_audio import save_wav, convert_to_mp3
 from transcribe import transcribe
 import sounddevice as sd
+from suno import generate_audio, get_clip_details, download_audio
 
 app = Flask(__name__)
 CORS(app)
@@ -32,32 +33,31 @@ def record_audio(duration=5, sample_rate=44100):
 def transcribe_audio():
   print("transcribing audio")
   transcribe()
+  print('hi')
 
-@app.route('/api/predict', methods=['GET'])
-def predict():
-  parser = argparse.ArgumentParser(description='Audio Classification Training')
+  return ""
 
-  parser.add_argument('--data', type=str, default='recorded_audio.wav')
-  parser.add_argument('--dt', type=float, default=1.0,
-                      help='time in seconds to sample audio')
-  parser.add_argument('--sr', type=int, default=16000,
-                      help='sample rate of clean audio')
-  parser.add_argument('--threshold', type=str, default=20,
-                      help='threshold magnitude for np.int16 dtype')
-  args, _ = parser.parse_known_args()
+@app.route('/api/generate', methods=['GET'])
+def generate():
+    tags = input("Enter tags for the song (e.g., pop, rock, etc.): ")
+    
 
-  convert_to_mono_and_resample(args.data)
-
-  make_clips(args.data)
-
-  # Make predictions for each category using the single WAV file
-  gender = make_prediction(["feminine", "masculine"], "models/gender_conv2d_30.h5", args)
-  quality = make_prediction(["neutral", "raspy", "smooth"], "models/quality_conv2d_30.h5", args)
-  range_ = make_prediction(["alto", "bass", "soprano", "tenor"], "models/range_conv2d_30.h5", args)
-  speed = make_prediction(["fast", "normal", "slow"], "models/speed_conv2d_30.h5", args)
-
-  print(f"gender: {gender}, quality: {quality}, range: {range_}, speed: {speed}")
-
+    topics = ["super raspy female funky vocal about New York", "classical opera smooth female vocal about New York"]
+    
+    for i, topic in enumerate(topics, 1):
+        print(f"\nProcessing topic {i}: {topic}")
+        
+        # Step 1: Generate audio from the topic and tags
+        clip_id = generate_audio(topic, tags)
+        
+        # Step 2: If audio is generated, monitor the status until it's ready
+        if clip_id:
+            audio_url = get_clip_details(clip_id)
+            
+            # Step 3: If the audio URL is retrieved, download it as an MP3 file
+            if audio_url:
+                output_file = f"output.mp3"
+                download_audio(audio_url, output_file)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

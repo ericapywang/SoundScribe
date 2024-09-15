@@ -14,16 +14,7 @@ export default function App() {
 
 
   const makeApiCalls = async() => {
-    const call1 = fetch(`http://${config.server_host}:${config.server_port}/api/transcribe`, { method: 'GET' });
-    const call2 = fetch(`http://${config.server_host}:${config.server_port}/api/data`, { method: 'GET' });
-
-    const [response1, response2] = await Promise.all([call1, call2]);
-
-    if (!response1.ok || !response2.ok) {
-      console.error("One or both API calls failed:", response1.status, response2.status);
-      return; // Stop further execution if there's an error
-    }
-
+    await fetch(`http://${config.server_host}:${config.server_port}/api/transcribe`, { method: 'GET' });
     await fetch(`http://${config.server_host}:${config.server_port}/api/generate`, {method: 'GET'});
 
     router.push('/playback');
