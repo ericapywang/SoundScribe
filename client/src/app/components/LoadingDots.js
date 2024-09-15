@@ -39,16 +39,16 @@ const keyframes = `
   }
 `;
 
-export default function LoadingIndicator() {
+export default function Dots({ word }) {
   return (<Box display="flex" gap={2} flexDirection="column" alignItems="center" justifyContent="center" height="100vh">
-    <Typography variant="h3" gutterBottom>
-      Loading
-    </Typography>
-    <Box display="flex">
-      <Box component="span" sx={dotStyle1} />
-      <Box component="span" sx={dotStyle2} />
-      <Box component="span" sx={dotStyle3} />
-    </Box>
-    <style>{keyframes}</style> {/* Add keyframes directly to the style tag */}
+      <Typography variant="h2" gutterBottom>
+        {word}
+      </Typography>
+      <Box display="flex">
+        <Box component="span" sx={dotStyle1} />
+        <Box component="span" sx={dotStyle2} />
+        <Box component="span" sx={dotStyle3} />
+      </Box>
+      <style>{keyframes}</style>
   </Box>);
 };

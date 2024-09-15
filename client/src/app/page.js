@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import {Button, Box, Stack, Typography} from '@mui/material/';
 import MicIcon from '@mui/icons-material/Mic';
 import { useRouter } from 'next/navigation';
-import Visualizer from './components/AudioVisualizer';
+import Navbar from './/components/Navbar';
 
 const config = require('../config.json');
 
@@ -49,6 +49,7 @@ export default function Home() {
 
   return (
     <div>
+      <Navbar />
       <Box
         display='flex'
         justifyContent='center'
@@ -71,7 +72,6 @@ export default function Home() {
             onClick={startRecording}>
             <MicIcon style={{color: 'white', width: 90, height: 90}}></MicIcon>
           </Button>
-          {isRecording && <Typography>Recording...</Typography>}
           <Button style={{backgroundColor: 'blue', width: 200, height: 60}} onClick={generate}>
             <Typography color='white'>Generate</Typography>
           </Button>
