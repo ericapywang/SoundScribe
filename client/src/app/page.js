@@ -77,25 +77,6 @@ export default function Home() {
           >
             <MicIcon style={{ color: 'white', width: 90, height: 90 }}></MicIcon>
           </Button>
-
-          {/* Generate Button */}
-          <Button
-            sx={{
-              background: 'linear-gradient(90deg, #ff7b72, #a855f7)', // Apply the same gradient here
-              width: 200,
-              height: 60,
-              borderRadius: '30px', // Slight rounding for a modern look
-              color: 'white',
-              fontWeight: 'bold',
-              '&:hover': {
-                background: 'linear-gradient(90deg, #ff7b72, #a855f7)', // Keep gradient on hover
-                boxShadow: '0 0 10px rgba(168, 85, 247, 0.6)', // Add a soft glow on hover
-              },
-            }}
-            onClick={generate}
-          >
-            <Typography color='inherit'>Generate</Typography>
-          </Button>
         </Stack>
       </Box>
       <style>{keyframes}</style>
