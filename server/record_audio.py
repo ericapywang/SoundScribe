@@ -3,22 +3,21 @@ import numpy as np
 import scipy.io.wavfile as wavfile
 from pydub import AudioSegment
 from flask import Flask, jsonify
-from server import app
 
 # Function to record audio from the microphone
-@app.route('/api/record', methods=['GET'])
-def record_audio(duration=5, sample_rate=44100):
-    print("Recording for {} seconds...".format(duration), file=sys.stderr)
-    audio_data = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1, dtype='int16')
-    sd.wait()  # Wait until the recording is finished
+# @app.route('/api/record', methods=['GET'])
+# def record_audio(duration=5, sample_rate=44100):
+#     print("Recording for {} seconds...".format(duration), file=sys.stderr)
+#     audio_data = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1, dtype='int16')
+#     sd.wait()  # Wait until the recording is finished
 
-    wav_filename = 'recorded_audio.wav'
-    save_wav(audio_data, sample_rate, wav_filename)
+#     wav_filename = 'recorded_audio.wav'
+#     save_wav(audio_data, sample_rate, wav_filename)
 
-    mp3_filename = 'recorded_audio.mp3'
-    convert_to_mp3(wav_filename, mp3_filename)
+#     mp3_filename = 'recorded_audio.mp3'
+#     convert_to_mp3(wav_filename, mp3_filename)
 
-    return audio_data, sample_rate
+#     return audio_data, sample_rate
 
 # Function to save the recorded audio as a WAV file
 def save_wav(audio_data, sample_rate, filename='output.wav'):
