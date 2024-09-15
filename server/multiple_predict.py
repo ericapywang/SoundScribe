@@ -133,27 +133,27 @@ def make_prediction(classes, model_name, args):
     # Return the most common class as a string
     return most_common_class
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description='Audio Classification Training')
+#     parser = argparse.ArgumentParser(description='Audio Classification Training')
 
-    parser.add_argument('--data', type=str, default='recorded_audio.wav')
-    parser.add_argument('--dt', type=float, default=1.0,
-                        help='time in seconds to sample audio')
-    parser.add_argument('--sr', type=int, default=16000,
-                        help='sample rate of clean audio')
-    parser.add_argument('--threshold', type=str, default=20,
-                        help='threshold magnitude for np.int16 dtype')
-    args, _ = parser.parse_known_args()
+#     parser.add_argument('--data', type=str, default='recorded_audio.wav')
+#     parser.add_argument('--dt', type=float, default=1.0,
+#                         help='time in seconds to sample audio')
+#     parser.add_argument('--sr', type=int, default=16000,
+#                         help='sample rate of clean audio')
+#     parser.add_argument('--threshold', type=str, default=20,
+#                         help='threshold magnitude for np.int16 dtype')
+#     args, _ = parser.parse_known_args()
 
-    convert_to_mono_and_resample(args.data)
+#     convert_to_mono_and_resample(args.data)
 
-    make_clips(args.data)
+#     make_clips(args.data)
 
-    # Make predictions for each category using the single WAV file
-    gender = make_prediction(["feminine", "masculine"], "models/gender_conv2d_30.h5", args)
-    quality = make_prediction(["neutral", "raspy", "smooth"], "models/quality_conv2d_30.h5", args)
-    range_ = make_prediction(["alto", "bass", "soprano", "tenor"], "models/range_conv2d_30.h5", args)
-    speed = make_prediction(["fast", "normal", "slow"], "models/speed_conv2d_30.h5", args)
+#     # Make predictions for each category using the single WAV file
+#     gender = make_prediction(["feminine", "masculine"], "models/gender_conv2d_30.h5", args)
+#     quality = make_prediction(["neutral", "raspy", "smooth"], "models/quality_conv2d_30.h5", args)
+#     range_ = make_prediction(["alto", "bass", "soprano", "tenor"], "models/range_conv2d_30.h5", args)
+#     speed = make_prediction(["fast", "normal", "slow"], "models/speed_conv2d_30.h5", args)
 
-    print(f"gender: {gender}, quality: {quality}, range: {range_}, speed: {speed}")
+#     print(f"gender: {gender}, quality: {quality}, range: {range_}, speed: {speed}")
