@@ -11,10 +11,18 @@ export default function App() {
   const router = useRouter();
   const [ignored, setIgnore] = useState(false);
 
+  const makeApiCalls = async() => {
+    const call1 = fetch(`http://${config.server_host}:${config.server_port}/api/transcribe`, { method: 'GET' });
+    const call2 = fetch(`http://${config.server_host}:${config.server_port}/api/predict`, { method: 'GET' });
+    await Promise.all([call1, call2]);
+    //await fetch(`http://${config.server_host}:${config.server_port}/api/generate`, { method: 'GET' });
+
+    router.push('/playback')
+  }
+
   useEffect(() => {
     if (!ignored) {
-      fetch(`http://${config.server_host}:${config.server_port}/api/transcribe`, { method: 'GET' });
-      fetch(`http://${config.server_host}:${config.server_port}/api/predict`, { method: 'GET' });
+      makeApiCalls()
       setIgnore(true)
     }
   }, []); // Empty dependency array to run this effect once when the component mounts
