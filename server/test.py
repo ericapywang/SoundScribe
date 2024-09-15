@@ -25,7 +25,7 @@ def transcribe():
   print("Transcribed Text:")
   print(transcribed_text)
 
-  for idx, doc in enumerate([transcribed_text]):
+  for idx, doc in enumerate(list(transcribed_text)):
     print(f"Document {idx}: {doc}")
     
     # Use MMR to get diverse topics, with a diversity factor of 0.7 (more diversity)
@@ -40,3 +40,5 @@ def transcribe():
     
     print("Extracted Diverse Topics:", keywords)
     print("-" * 50)
+
+transcribe()
