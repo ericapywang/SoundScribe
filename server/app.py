@@ -42,13 +42,13 @@ def generate():
     tags = input("Enter tags for the song (e.g., pop, rock, etc.): ")
     
 
-    topics = ["super raspy female funky vocal about New York", "classical opera smooth female vocal about New York"]
+    topics = [f"raspy, tenor range, male funky vocal, normal tempo pop song, about {transcription_string}"]
     
     for i, topic in enumerate(topics, 1):
         print(f"\nProcessing topic {i}: {topic}")
         
         # Step 1: Generate audio from the topic and tags
-        clip_id = generate_audio(topic, tags)
+        clip_id = "pop"
         
         # Step 2: If audio is generated, monitor the status until it's ready
         if clip_id:

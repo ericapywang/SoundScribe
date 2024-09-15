@@ -3,6 +3,7 @@ import torch
 import numpy as np
 import tqdm
 from keybert import KeyBERT
+from suno import generate_audio, get_clip_details, download_audio
 
 # Initialize the KeyBERT model
 kw_model = KeyBERT()
@@ -40,3 +41,20 @@ def transcribe():
     
     print("Extracted Diverse Topics:", keywords)
     print("-" * 50)
+
+    topics = [f"raspy, tenor range, male funky vocal, normal tempo pop song, about {keywords}"]
+    
+    for i, topic in enumerate(topics, 1):
+        print(f"\nProcessing topic {i}: {topic}")
+        
+        # Step 1: Generate audio from the topic and tags
+        clip_id = "pop"
+        
+        # Step 2: If audio is generated, monitor the status until it's ready
+        if clip_id:
+            audio_url = get_clip_details(clip_id)
+            
+            # Step 3: If the audio URL is retrieved, download it as an MP3 file
+            if audio_url:
+                output_file = f"output.mp3"
+                download_audio(audio_url, output_file)

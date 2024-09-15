@@ -15,7 +15,7 @@ export default function App() {
 
   const makeApiCalls = async() => {
     await fetch(`http://${config.server_host}:${config.server_port}/api/transcribe`, { method: 'GET' });
-    await fetch(`http://${config.server_host}:${config.server_port}/api/generate`, {method: 'GET'});
+    //await fetch(`http://${config.server_host}:${config.server_port}/api/generate`, {method: 'GET'});
 
     router.push('/playback');
   }
