@@ -16,7 +16,7 @@ def get_data():
     return jsonify(data)
 
 @app.route('/api/record', methods=['GET'])
-def record_audio(duration=5, sample_rate=44100):
+def record_audio(duration=10, sample_rate=44100):
     print("Recording for {} seconds...".format(duration))
     audio_data = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1, dtype='int16')
     sd.wait()  # Wait until the recording is finished
