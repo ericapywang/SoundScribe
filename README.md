@@ -11,3 +11,9 @@ To run frontend, run:
 cd client
 npm run dev
 ```
+
+To run backend, run:
+```
+cd server
+flask run
+```

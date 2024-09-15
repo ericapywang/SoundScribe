@@ -3,10 +3,16 @@ import {Button, Box, Stack} from '@mui/material/';
 import MicIcon from '@mui/icons-material/Mic';
 import { useRouter } from 'next/navigation';
 
+const config = require('../config.json');
+
 export default function Home() {
   const router = useRouter();
   const generate = async () => {
     router.push('/loading');
+  }
+
+  const startRecording = async () => {
+    await fetch(`http://${config.server_host}:${config.server_port}/api/record`, {method: 'GET'})
   }
 
   return (
@@ -19,7 +25,7 @@ export default function Home() {
         width='100vw'
       >
         <Stack spacing={5}>
-          <Button style={{backgroundColor: 'blue', borderRadius: '50%', width: 200, height: 200, minWidth: 0}}>
+          <Button style={{backgroundColor: 'blue', borderRadius: '50%', width: 200, height: 200, minWidth: 0}} onClick={startRecording}>
             <MicIcon style={{color: 'white', width: 90, height: 90}}></MicIcon>
           </Button>
           <Button style={{backgroundColor: 'blue', width: 200, height: 60}} onClick={generate}>
